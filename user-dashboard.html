@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candidate Dashboard • Resume Search Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="candidate-dashboard">
+    <div class="dash-shell">
+      <div class="dash-card">
+        <header class="dash-header">
+          <div class="dash-title-block">
+            <div class="dash-title">Candidate dashboard</div>
+            <div class="dash-subtitle">
+              Signed in as
+              <span id="current-user-name"></span>. Maintain a single source-of-truth resume for recruiters to find.
+            </div>
+            <div class="chip-row">
+              <span class="chip">One resume per account</span>
+              <span class="chip">Edit, update, delete</span>
+              <span class="chip">FastAPI-backed CRUD</span>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-ghost btn-sm" data-logout>Logout</button>
+          </div>
+        </header>
+
+        <main class="dash-main">
+          <section class="panel">
+            <div class="section-title-row">
+              <h2 class="section-title">Your current resume</h2>
+              <div class="section-subtitle">
+                This is what recruiters will see in their search results.
+              </div>
+            </div>
+            <div id="candidate-resume-view" class="mt-1">
+              <p class="meta">
+                Loading your resume…
+              </p>
+            </div>
+          </section>
+
+          <aside class="panel panel-muted">
+            <div class="section-title-row">
+              <h2 class="section-title">Add / update resume</h2>
+              <div class="section-subtitle">
+                Changes are saved via FastAPI and instantly reflected across the app.
+              </div>
+            </div>
+
+            <form id="candidate-resume-form" novalidate>
+              <input type="hidden" name="resumeId" />
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Alex Doe"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="alex@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="role">Role / Title</label>
+                  <input
+                    id="role"
+                    name="role"
+                    type="text"
+                    placeholder="Frontend Engineer"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="experience">Experience</label>
+                  <select id="experience" name="experience" required>
+                    <option value="Fresher">Fresher</option>
+                    <option value="Experienced">Experienced</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="skills">Skills (comma‑separated)</label>
+                <input
+                  id="skills"
+                  name="skills"
+                  type="text"
+                  placeholder="React, TypeScript, FastAPI"
+                />
+              </div>
+
+              <div class="field">
+                <label for="projects">Projects</label>
+                <textarea
+                  id="projects"
+                  name="projects"
+                  placeholder="Briefly describe a few relevant projects..."
+                ></textarea>
+              </div>
+
+              <div class="field">
+                <label for="resume_text">Resume text</label>
+                <textarea
+                  id="resume_text"
+                  name="resume_text"
+                  placeholder="Paste your summary, experience, and bullet points here..."
+                ></textarea>
+              </div>
+
+              <div class="btn-row">
+                <button type="submit" class="btn-primary">
+                  Save resume
+                </button>
+                <button
+                  type="button"
+                  id="candidate-delete-btn"
+                  class="btn btn-danger btn-sm"
+                >
+                  Delete resume
+                </button>
+              </div>
+
+              <div id="candidate-status" class="status" style="display: none"></div>
+            </form>
+          </aside>
+        </main>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+

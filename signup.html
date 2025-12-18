@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up • Resume Search Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="signup">
+    <div class="app-shell">
+      <div class="card">
+        <div class="card-inner">
+          <header class="app-header">
+            <div>
+              <div class="app-title">
+                <span class="accent">Create</span> your account
+              </div>
+              <p class="app-subtitle">
+                One signup flow, two dashboards – choose Candidate or Recruiter and we’ll route you accordingly.
+              </p>
+            </div>
+            <span class="badge">Step 1 of 2 • Auth</span>
+          </header>
+
+          <div class="layout-two-column">
+            <section class="panel">
+              <h2 class="panel-title">Sign up</h2>
+              <p class="panel-description">
+                Use a real email during development so you can reuse it across login and dashboards.
+              </p>
+
+              <form id="signup-form" novalidate>
+                <div class="field">
+                  <label for="name">Full name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Alex Doe"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="alex@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Minimum 6 characters"
+                    minlength="6"
+                    required
+                  />
+                </div>
+
+                <div class="field field-row">
+                  <div class="field">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                      <option value="candidate">Candidate</option>
+                      <option value="recruiter">Recruiter</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>What you get</label>
+                    <p class="meta">
+                      Candidates manage a single resume. Recruiters get search,
+                      filters and read‑only views.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="btn-row">
+                  <button type="submit" class="btn-primary">Create account</button>
+                  <span class="meta">
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                  </span>
+                </div>
+
+                <div id="signup-status" class="status" style="display: none"></div>
+              </form>
+            </section>
+
+            <aside class="auth-side">
+              <div>
+                <div class="auth-hero">How the flow works</div>
+                <p class="auth-copy">
+                  On successful signup we simply redirect you to login – FastAPI should handle user persistence and JWT generation at login.
+                </p>
+                <ul class="auth-bullets">
+                  <li>
+                    <span class="dot"></span>
+                    <span>Form validation on name, email, password, and role.</span>
+                  </li>
+                  <li>
+                    <span class="dot"></span>
+                    <span>On success, we redirect to the login screen.</span>
+                  </li>
+                  <li>
+                    <span class="dot"></span>
+                    <span>All API traffic uses <code>/auth/signup</code> at your FastAPI base.</span>
+                  </li>
+                </ul>
+              </div>
+              <p class="meta mt-4">
+                Update the FastAPI endpoint paths in
+                <code>script.js</code>
+                if your backend uses different routes.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+

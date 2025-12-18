@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login • Resume Search Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="login">
+    <div class="app-shell">
+      <div class="card">
+        <div class="card-inner">
+          <header class="app-header">
+            <div>
+              <div class="app-title">
+                <span class="accent">Welcome</span> back
+              </div>
+              <p class="app-subtitle">
+                Login to jump straight into your candidate or recruiter dashboard.
+              </p>
+            </div>
+            <span class="badge">Step 2 of 2 • Auth</span>
+          </header>
+
+          <div class="layout-two-column">
+            <section class="panel">
+              <h2 class="panel-title">Login</h2>
+              <p class="panel-description">
+                We’ll authenticate via FastAPI, store the JWT in
+                <code>localStorage</code>, and redirect you based on your role.
+              </p>
+
+              <form id="login-form" novalidate>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Your password"
+                    required
+                  />
+                </div>
+
+                <div class="btn-row">
+                  <button type="submit" class="btn-primary">Login</button>
+                  <span class="meta">
+                    New here?
+                    <a href="signup.html">Create an account</a>
+                  </span>
+                </div>
+
+                <div id="login-status" class="status" style="display: none"></div>
+              </form>
+            </section>
+
+            <aside class="auth-side">
+              <div>
+                <div class="auth-hero">What happens on login</div>
+                <p class="auth-copy">
+                  The UI expects FastAPI to return an
+                  <code>access_token</code>
+                  and a
+                  <code>user</code>
+                  object containing
+                  <code>role</code>. Based on that, we route to the correct dashboard.
+                </p>
+                <ul class="auth-bullets">
+                  <li>
+                    <span class="dot"></span>
+                    <span>Error messages are surfaced inline for quick debugging.</span>
+                  </li>
+                  <li>
+                    <span class="dot"></span>
+                    <span>JWT is saved in <code>localStorage</code> under a stable key.</span>
+                  </li>
+                  <li>
+                    <span class="dot"></span>
+                    <span>Subsequent API calls use <code>Authorization: Bearer &lt;token&gt;</code>.</span>
+                  </li>
+                </ul>
+              </div>
+              <p class="meta mt-4">
+                To adjust field names or response shape, tweak
+                <code>apiRequest</code>
+                and
+                <code>initLoginPage</code>
+                in
+                <code>script.js</code>.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+

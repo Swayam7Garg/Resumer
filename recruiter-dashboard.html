@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recruiter Dashboard • Resume Search Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="recruiter-dashboard">
+    <div class="dash-shell">
+      <div class="dash-card">
+        <header class="dash-header">
+          <div class="dash-title-block">
+            <div class="dash-title">Recruiter dashboard</div>
+            <div class="dash-subtitle">
+              Signed in as
+              <span id="current-user-name"></span>. Search across candidate resumes with keywords and filters.
+            </div>
+            <div class="chip-row">
+              <span class="chip">Keyword search</span>
+              <span class="chip">Skills / role / experience filters</span>
+              <span class="chip">Read-only resume modal</span>
+            </div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-ghost btn-sm" data-logout>Logout</button>
+          </div>
+        </header>
+
+        <main class="dash-main">
+          <section class="panel panel-muted">
+            <div class="section-title-row">
+              <h2 class="section-title">Search candidates</h2>
+              <div class="section-subtitle">
+                Type a few keywords, refine with filters, then click a result to see the full resume.
+              </div>
+            </div>
+
+            <div class="search-bar-row">
+              <input
+                id="search-query"
+                class="search-input"
+                type="text"
+                placeholder="Search by name, skills, role, projects, resume text..."
+              />
+              <button id="search-btn" class="btn-primary">Search</button>
+            </div>
+
+            <div class="filters-row">
+              <div class="field">
+                <label for="filter-skills">Skills (comma‑separated)</label>
+                <input
+                  id="filter-skills"
+                  type="text"
+                  placeholder="React, FastAPI"
+                />
+              </div>
+              <div class="field">
+                <label for="filter-role">Role</label>
+                <input
+                  id="filter-role"
+                  type="text"
+                  placeholder="Backend Engineer"
+                />
+              </div>
+              <div class="field">
+                <label for="filter-experience">Experience</label>
+                <select id="filter-experience">
+                  <option value="">Any</option>
+                  <option value="Fresher">Fresher</option>
+                  <option value="Experienced">Experienced</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="results-list" class="results-list no-scrollbar">
+              <div class="results-empty">
+                Start by searching for a role or key skill – e.g.
+                <strong>"React"</strong>
+                or
+                <strong>"Backend"</strong>.
+              </div>
+            </div>
+
+            <div class="pagination-row">
+              <div id="pagination-info">Showing 0 of 0</div>
+              <div class="pagination-controls">
+                <button
+                  id="pagination-prev"
+                  class="btn btn-ghost btn-sm pill-muted"
+                  type="button"
+                >
+                  Prev
+                </button>
+                <button
+                  id="pagination-next"
+                  class="btn btn-ghost btn-sm pill-muted"
+                  type="button"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <aside class="panel">
+            <div class="section-title-row">
+              <h2 class="section-title">How search results work</h2>
+              <div class="section-subtitle">
+                This side panel is purely informational – all resume data comes from your FastAPI backend.
+              </div>
+            </div>
+            <p class="meta">
+              The UI expects the
+              <code>/recruiter/search</code>
+              endpoint to return JSON shaped like:
+            </p>
+            <pre class="meta mt-2 overflow-auto no-scrollbar" style="max-height: 180px;">
+{
+  "items": [/* array of resumes */],
+  "total": 42,
+  "page": 1,
+  "page_size": 5
+}</pre>
+            <p class="meta mt-2">
+              Each resume item should roughly include:
+              <code>id</code>,
+              <code>name</code>,
+              <code>email</code>,
+              <code>skills</code>,
+              <code>role</code>,
+              <code>experience</code>,
+              <code>projects</code>,
+              <code>resume_text</code>.
+            </p>
+            <p class="meta mt-3">
+              We highlight matched keywords in names, roles, skills, projects and resume text to speed up scanning.
+            </p>
+          </aside>
+        </main>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+

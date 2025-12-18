@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Search Platform</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="landing">
+    <div class="app-shell">
+      <div class="card">
+        <div class="card-inner">
+          <header class="app-header">
+            <div>
+              <div class="app-title">
+                <span class="accent">Resume</span> Database
+              </div>
+              <p class="app-subtitle">
+                Lightweight resume search UI for hackathons – Frontend only, ready to plug into FastAPI.
+              </p>
+            </div>
+            <span class="badge">Frontend-only • JWT • FastAPI-ready</span>
+          </header>
+
+          <div class="layout-two-column">
+            <section class="panel panel-muted">
+              <h2 class="panel-title">Choose your workspace</h2>
+              <p class="panel-description">
+                Candidates manage a single source-of-truth resume, recruiters run fast, keyword-driven searches with filters.
+              </p>
+
+              <div class="btn-row mt-3">
+                <a class="btn btn-primary" href="signup.html">Get Started</a>
+                <a class="btn btn-ghost" href="login.html">I already have an account</a>
+              </div>
+
+              <div class="chip-row mt-3">
+                <span class="chip">Role-based dashboards</span>
+                <span class="chip">JWT auth via FastAPI</span>
+                <span class="chip">Clean read-only recruiter view</span>
+              </div>
+            </section>
+
+            <aside class="auth-side">
+              <div>
+                <div class="auth-hero">
+                  Built for
+                  <span class="accent">demo-ready</span>
+                  flows.
+                </div>
+                <p class="auth-copy">
+                  Point the API base URL to your FastAPI backend and the UI will handle JWTs, redirects, and error states for you.
+                </p>
+                <ul class="auth-bullets">
+                  <li>
+                    <span class="dot"></span>
+                    <span>Frontend-only – no hidden backend logic.</span>
+                  </li>
+                  <li>
+                    <span class="dot"></span>
+                    <span>Skill chips, keyword highlighting, and empty states.</span>
+                  </li>
+                  <li>
+                    <span class="dot"></span>
+                    <span>Clean responsive layout for quick hackathon demos.</span>
+                  </li>
+                </ul>
+              </div>
+              <p class="meta mt-4">
+                API base URL is configured in
+                <code>script.js</code>
+                via
+                <code>API_BASE_URL</code>.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
